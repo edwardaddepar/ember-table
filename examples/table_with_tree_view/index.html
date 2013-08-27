@@ -47,7 +47,8 @@
           {{action toggleCollapse view.row}}>
         <i class="icon-caret-down ember-table-toggle-icon"></i>
       </span>
-      <div class="ember-table-content-container" {{action sortByColumn view.column}}>
+      <div class="ember-table-content-container
+        ember-table-table-header-tree-cell" {{action sortByColumn view.column}}>
         <span class="ember-table-content">
           {{view.column.headerCellName}}
         </span>

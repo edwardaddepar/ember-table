@@ -369,6 +369,9 @@ body {
   left: 0;
   right: 0;
 }
+.ember-table-header-cell .ember-table-content-container.ember-table-table-header-tree-cell {
+  left: 20px;
+}
 .ember-table-header-cell .ember-table-content-container:hover {
   cursor: pointer;
 }

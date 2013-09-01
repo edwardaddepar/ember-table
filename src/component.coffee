@@ -1,6 +1,6 @@
 Ember.Table.EmberTableComponent =
 Ember.Component.extend Ember.StyleBindingsMixin, Ember.ResizeHandler,
-  templateName:   'components/_ember-table'
+  templateName:   'components/ember-table'
   classNames:     ['ember-table-tables-container']
   styleBindings:  ['height']
   height:         Ember.computed.alias '_tablesContainerHeight'

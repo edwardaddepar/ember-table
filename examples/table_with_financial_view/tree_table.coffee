@@ -182,6 +182,9 @@ App.TreeTableExample.TreeTableRow = Ember.Table.Row.extend
 ################################################################################
 # Views
 ################################################################################
+Ember.Table.TableCell = Ember.Table.TableCell.extend
+  templateName: 'table-cell-container'
+
 App.TreeTableExample.HeaderCell = Ember.Table.HeaderCell.extend
   templateName: 'table-tree-header-cell'
 

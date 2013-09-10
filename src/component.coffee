@@ -64,7 +64,7 @@ Ember.Component.extend Ember.StyleBindingsMixin, Ember.ResizeHandler,
     totalWidth = @get '_width'
     fixedColumnsWidth = @get '_fixedColumnsWidth'
     tableColumns = @get 'tableColumns'
-    defaultContentWidth = @_getTotalWidth tableColumns
+    defaultContentWidth = @_getTotalWidth tableColumns, 'defaultColumnWidth'
     availableContentWidth = totalWidth - fixedColumnsWidth
     if defaultContentWidth < availableContentWidth
       remainingWidth = availableContentWidth - defaultContentWidth
@@ -72,7 +72,8 @@ Ember.Component.extend Ember.StyleBindingsMixin, Ember.ResizeHandler,
       additionWidthPerColumn = Math.floor(remainingWidth / numColumnToDistributeWidth)
       tableColumns.forEach (column) ->
         if column.get('canAutoResize')
-          column.incrementProperty('columnWidth', additionWidthPerColumn)
+          columnWidth = column.get('defaultColumnWidth') + additionWidthPerColumn
+          column.set 'columnWidth', columnWidth
 
   onColumnSort: (column, newIndex) ->
     columns  = @get 'tableColumns'
@@ -215,7 +216,7 @@ Ember.Component.extend Ember.StyleBindingsMixin, Ember.ResizeHandler,
   .property('bodyContent.length', '_numItemsShowing', 'rowHeight',
             '_tableScrollTop')
 
-  _getTotalWidth: (columns) ->
+  _getTotalWidth: (columns, columnWidthPath = 'columnWidth') ->
     return 0 unless columns
-    widths = columns.getEach('columnWidth') or []
+    widths = columns.getEach(columnWidthPath) or []
     widths.reduce ((total, w) -> total + w), 0

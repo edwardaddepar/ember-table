@@ -114,14 +114,13 @@ Ember.Table.HeaderRow = Ember.View.extend Ember.ScrollHandlerMixin,
   sortableOption: Ember.computed ->
     axis: 'x'
     containment: 'parent'
-    cursor: 'pointer'
-    cursorAt: { left: 20, top: 20 }
+    cursor: 'move'
     helper: 'clone'
     items: ".ember-table-header-cell.sortable"
     opacity: 0.9
     placeholder: 'ui-state-highlight'
     scroll: true
-    tolerance: 'intersect'
+    tolerance: 'pointer'
     update: jQuery.proxy(@onColumnSortDone,   this)
     stop:   jQuery.proxy(@onColumnSortStop,   this)
     sort:   jQuery.proxy(@onColumnSortChange, this)

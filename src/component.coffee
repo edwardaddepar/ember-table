@@ -149,7 +149,7 @@ Ember.Component.extend Ember.StyleBindingsMixin, Ember.ResizeHandler,
   _tableColumnsWidth: Ember.computed ->
     # Hack: We add 26px padding to the right of the table content so that we can
     # reorder into the last column.
-    contentWidth = (@_getTotalWidth @get('tableColumns')) + 26
+    contentWidth = (@_getTotalWidth @get('tableColumns'))# + 26
     availableWidth = @get('_width') - @get('_fixedColumnsWidth')
     if contentWidth > availableWidth then contentWidth else availableWidth
   .property 'tableColumns.@each.columnWidth', '_width', '_fixedColumnsWidth'
